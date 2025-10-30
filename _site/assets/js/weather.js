@@ -33,23 +33,13 @@ function renderClock(containerId, timezoneOffset) {
         </radialGradient>
       </defs>
       <circle cx="50" cy="50" r="48" fill="url(#face)" stroke="#333" stroke-width="3"/>
-      
-      <!-- Roman numerals -->
       <text x="50" y="18" text-anchor="middle" font-size="8" fill="#333">XII</text>
       <text x="82" y="52" text-anchor="middle" font-size="8" fill="#333">III</text>
       <text x="50" y="88" text-anchor="middle" font-size="8" fill="#333">VI</text>
       <text x="18" y="52" text-anchor="middle" font-size="8" fill="#333">IX</text>
-
-      <!-- Hour hand -->
       <line x1="50" y1="50" x2="${50 + 20 * Math.sin(Math.PI * hourDeg / 180)}" y2="${50 - 20 * Math.cos(Math.PI * hourDeg / 180)}" stroke="#222" stroke-width="4" stroke-linecap="round"/>
-      
-      <!-- Minute hand -->
       <line x1="50" y1="50" x2="${50 + 30 * Math.sin(Math.PI * minuteDeg / 180)}" y2="${50 - 30 * Math.cos(Math.PI * minuteDeg / 180)}" stroke="#444" stroke-width="3" stroke-linecap="round"/>
-      
-      <!-- Second hand -->
       <line x1="50" y1="50" x2="${50 + 35 * Math.sin(Math.PI * secondDeg / 180)}" y2="${50 - 35 * Math.cos(Math.PI * secondDeg / 180)}" stroke="#e33" stroke-width="2" stroke-linecap="round"/>
-      
-      <!-- Center pivot -->
       <circle cx="50" cy="50" r="3" fill="#333"/>
     </svg>
   `;
@@ -60,7 +50,6 @@ function renderClock(containerId, timezoneOffset) {
   }
 }
 
-
 async function fetchWeather(city) {
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city.name)}&units=metric&appid=${API_KEY}`;
   try {
@@ -70,12 +59,16 @@ async function fetchWeather(city) {
     const timezoneOffset = data.timezone; // in seconds
     cityOffsets[city.name] = timezoneOffset;
 
+    const weatherIconCode = data.weather[0].icon;
+    const weatherIconUrl = `https://openweathermap.org/img/wn/${weatherIconCode}@2x.png`;
+
     const card = document.createElement('div');
     card.className = 'weather-card';
     card.innerHTML = `
       <div class="weather-content">
         <div class="weather-info">
           <h3>${city.continent} — ${city.name}</h3>
+          <img src="${weatherIconUrl}" alt="${data.weather[0].description}" class="weather-icon">
           <p>🌡️ ${data.main.temp}°C — ${data.weather[0].description}</p>
           <p>Humidity: ${data.main.humidity}% | Wind: ${data.wind.speed} m/s</p>
           <small>Updated: ${new Date().toLocaleTimeString()}</small>

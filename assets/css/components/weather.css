@@ -49,3 +49,9 @@
   height: 80px;
   margin-left: 1rem;
 }
+
+.weather-icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 0.5rem;
+}

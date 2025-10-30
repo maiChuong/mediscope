@@ -25,3 +25,10 @@ header nav a {
 header nav a:hover {
   text-decoration: underline;
 }
+
+.dragonfly-icon {
+  width: 148px;
+  height: 148px;
+  margin: 1rem auto;
+  display: block;
+}
