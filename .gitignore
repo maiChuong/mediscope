@@ -420,4 +420,4 @@ FodyWeavers.xsd
 # Local
 data/auth.json
 data/authbak.json
-_docs/
+_docs/notes.md

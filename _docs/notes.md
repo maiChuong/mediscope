@@ -24,3 +24,9 @@ bundle exec jekyll serve
 
 http://127.0.0.1:4000/login.html
 https://api.openweathermap.org/data/2.5/weather?q=Ho%20Chi%20Minh&units=metric&appid=YOUR_API_KEY
+
+
+## Fix login auth
+?
+## Fix weather fetch API data
+?
