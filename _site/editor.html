@@ -1,0 +1,5 @@
+<script>
+  if (localStorage.getItem('authUser') !== 'admin') {
+    window.location.href = '/unauthorized.html';
+  }
+</script>

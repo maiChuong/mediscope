@@ -17,3 +17,7 @@ The encrypted file auth.json.enc is committed to your repo under data/
 
 Your auth.js fetches /data/auth.json at runtime to validate login
 
+
+
+bundle exec jekyll build
+bundle exec jekyll serve
