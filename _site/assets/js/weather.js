@@ -1,27 +1,43 @@
 const API_KEY = '6b86252dc61a9321bc87c3bcd0a5dcf4'; // Replace with your actual key
-const CITY = 'Ho Chi Minh';
-const URL = `https://api.openweathermap.org/data/2.5/weather?q=${CITY}&units=metric&appid=${API_KEY}`;
+const cities = [
+  { name: 'Ho Chi Minh City', continent: 'Asia' },
+  { name: 'London', continent: 'Europe' },
+  { name: 'New York', continent: 'North America' },
+  { name: 'São Paulo', continent: 'South America' },
+  { name: 'Nairobi', continent: 'Africa' },
+  { name: 'Sydney', continent: 'Oceania' }
+];
 
-async function fetchWeather() {
+const container = document.getElementById('weather-section');
+
+async function fetchWeather(city) {
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city.name)}&units=metric&appid=${API_KEY}`;
   try {
-    const response = await fetch(URL);
-    const data = await response.json();
+    const res = await fetch(url);
+    const data = await res.json();
 
-    const weatherHTML = `
-      <h3>🌡️ ${data.main.temp}°C — ${data.weather[0].description}</h3>
+    const card = document.createElement('div');
+    card.className = 'weather-card';
+    card.innerHTML = `
+      <h3>${city.continent} — ${city.name}</h3>
+      <p>🌡️ ${data.main.temp}°C — ${data.weather[0].description}</p>
       <p>Humidity: ${data.main.humidity}% | Wind: ${data.wind.speed} m/s</p>
       <small>Updated: ${new Date().toLocaleTimeString()}</small>
     `;
-
-    document.getElementById('weather-card').innerHTML = weatherHTML;
+    container.appendChild(card);
   } catch (err) {
-    document.getElementById('weather-card').innerHTML = '<p>Failed to load weather data.</p>';
-    console.error('Weather fetch error:', err);
+    console.error(`Failed to load weather for ${city.name}`, err);
   }
 }
 
-// Initial fetch
-fetchWeather();
+// Clear and load all cities
+container.innerHTML = '';
+cities.forEach(fetchWeather);
 
 // Refresh every hour
-setInterval(fetchWeather, 3600000);
+setInterval(() => {
+  container.innerHTML = '';
+  cities.forEach(fetchWeather);
+}, 3600000);
+
+
