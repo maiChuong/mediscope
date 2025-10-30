@@ -25,7 +25,7 @@ jobs:
       - name: Decrypt auth.json.enc
         run: |
           echo "$AUTH_KEY" > key.txt
-          openssl enc -aes-256-cbc -d -in data/auth.json.enc -out data/auth.json -pass file:key.txt
+          openssl enc -aes-256-cbc -d -pbkdf2 -in data/auth.json.enc -out data/auth.json -pass file:key.txt
 
       - name: Build Jekyll site
         run: jekyll build

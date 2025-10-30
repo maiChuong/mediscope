@@ -5,7 +5,7 @@ Create auth.json with following content:
 
 Then run this to encrypt it as auth.json.enc for github secret storage:
 
-openssl enc -aes-256-cbc -salt -in data/auth.json -out data/auth.json.enc -pass pass:mediPilot
+openssl enc -aes-256-cbc -salt -pbkdf2 -in data/auth.json -out data/auth.json.enc -pass pass:mediPilot
 rm data/auth.json
 
 ✅ What’s Left to Do
