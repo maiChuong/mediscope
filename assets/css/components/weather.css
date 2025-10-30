@@ -32,3 +32,18 @@
   margin-bottom: 0.5rem;
   color: var(--accent-color);
 }
+
+.weather-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.weather-info {
+  flex: 1;
+}
+
+.clock {
+  width: 60px;
+  height: 60px;
+}
