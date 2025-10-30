@@ -3,9 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>{{ page.title }} | MediScope</title>
+  <base href="https://maichuong.github.io/mediscope/" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/main.css">
-  <link id="theme-style" rel="stylesheet" href="/assets/css/themes/light.css">
+
+  <!-- Modular CSS -->
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link id="theme-style" rel="stylesheet" href="assets/css/themes/light.css">
 </head>
 <body>
   {% include header.html %}
@@ -18,8 +21,8 @@
 
   {% include footer.html %}
 
+  <!-- Theme toggle with localStorage -->
   <script>
-    // Theme persistence with localStorage
     const themeLink = document.getElementById('theme-style');
     const savedTheme = localStorage.getItem('theme');
 
@@ -30,14 +33,15 @@
     document.getElementById('themeToggle').addEventListener('click', () => {
       const current = themeLink.getAttribute('href');
       const newTheme = current.includes('light.css')
-        ? '/assets/css/themes/dark.css'
-        : '/assets/css/themes/light.css';
+        ? 'assets/css/themes/dark.css'
+        : 'assets/css/themes/light.css';
 
       themeLink.setAttribute('href', newTheme);
       localStorage.setItem('theme', newTheme);
     });
   </script>
-  <script defer src="/assets/js/weather.js"></script>
 
+  <!-- Dynamic weather fetch -->
+  <script defer src="assets/js/weather.js"></script>
 </body>
 </html>
