@@ -1,18 +1,25 @@
+/* Base styles */
 @import url('./base/reset.css');
 @import url('./base/typography.css');
 @import url('./base/layout.css');
+
+/* Component styles */
 @import url('./components/header.css');
 @import url('./components/footer.css');
 @import url('./components/weather.css');
 @import url('./components/meal.css');
 @import url('./components/nutrition.css');
-@import url('./themes/light.css'); /* Default theme */
 
+/* Default theme */
+@import url('./themes/light.css');
 
+/* Global layout */
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
 }
+
+/* Shared section styling */
 section {
   background-color: var(--card-bg);
   border-radius: 8px;
