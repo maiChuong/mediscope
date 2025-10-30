@@ -7,15 +7,31 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+
+      - name: Install Jekyll and dependencies
+        run: |
+          gem install bundler jekyll
+          bundle install || true  # skip if no Gemfile
 
       - name: Decrypt auth.json.enc
         run: |
           echo "$AUTH_KEY" > key.txt
           openssl enc -aes-256-cbc -d -in data/auth.json.enc -out data/auth.json -pass file:key.txt
 
-      - name: Build and Deploy
-        uses: jekyll/jekyll-action@v2
+      - name: Build Jekyll site
+        run: jekyll build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
