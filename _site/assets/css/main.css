@@ -9,6 +9,8 @@
 @import url('./components/weather.css');
 @import url('./components/meal.css');
 @import url('./components/nutrition.css');
+@import url('./components/theme-toggle.css');
+
 
 /* Default theme */
 @import url('./themes/light.css');
