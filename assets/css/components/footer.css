@@ -1,0 +1,17 @@
+footer {
+  background-color: var(--accent-color);
+  color: #fff;
+  text-align: center;
+  padding: 1rem 2rem;
+  font-size: 0.9rem;
+  border-top: 4px solid var(--card-bg);
+}
+
+footer a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+footer a:hover {
+  color: #e0e0e0;
+}

@@ -1,0 +1,21 @@
+<button id="themeToggle">Switch Theme</button>
+
+<script>
+  const themeLink = document.getElementById('theme-style');
+  const savedTheme = localStorage.getItem('theme');
+
+  // Apply saved theme on load
+  if (savedTheme) {
+    themeLink.setAttribute('href', savedTheme);
+  }
+
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    const current = themeLink.getAttribute('href');
+    const newTheme = current.includes('light.css')
+      ? '/assets/css/themes/dark.css'
+      : '/assets/css/themes/light.css';
+
+    themeLink.setAttribute('href', newTheme);
+    localStorage.setItem('theme', newTheme);
+  });
+</script>

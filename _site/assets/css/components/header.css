@@ -1,0 +1,27 @@
+header {
+  background-color: var(--accent-color);
+  color: #fff;
+  padding: 1rem 2rem;
+  text-align: center;
+  border-bottom: 4px solid var(--card-bg);
+}
+
+header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+header nav {
+  margin-top: 0.5rem;
+}
+
+header nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 1rem;
+  font-weight: bold;
+}
+
+header nav a:hover {
+  text-decoration: underline;
+}

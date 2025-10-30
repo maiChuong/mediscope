@@ -1,15 +1,104 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Home</title>
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <meta charset="UTF-8">
+  <title>Home | MediScope</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link id="theme-style" rel="stylesheet" href="/assets/css/themes/light.css">
 </head>
 <body>
   <header><h1>MediScope</h1></header>
 
-  <h1>Welcome to MediScope</h1>
+
+  <button id="themeToggle">Switch Theme</button>
+
+<script>
+  const themeLink = document.getElementById('theme-style');
+  const savedTheme = localStorage.getItem('theme');
+
+  // Apply saved theme on load
+  if (savedTheme) {
+    themeLink.setAttribute('href', savedTheme);
+  }
+
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    const current = themeLink.getAttribute('href');
+    const newTheme = current.includes('light.css')
+      ? '/assets/css/themes/dark.css'
+      : '/assets/css/themes/light.css';
+
+    themeLink.setAttribute('href', newTheme);
+    localStorage.setItem('theme', newTheme);
+  });
+</script>
+
+
+  <main>
+    <h1>Welcome to MediScope</h1>
+
+<section id="weather-section">
+  <h2>🌤️ Weather Calendar</h2>
+  <!-- Weather widget from WeatherWidget.io -->
+<div id="weather-card" class="weather-widget">
+  <h3>Loading weather for Ho Chi Minh City...</h3>
+</div>
+
+
+</section>
+
+<section id="meal-section">
+  <h2>🍽️ Best Meal of the Day</h2>
+  <div class="meal-highlight">
+  <h3>Guajillo Coconut Salmon</h3>
+  <p>Served with roasted squash and citrus glaze — a seasonal favorite from Danbi Seasonal Kitchen.</p>
+  <small>Source: <a href="https://www.msn.com/en-us/foodanddrink/foodnews/the-best-dishes-we-ate-in-october-2025/ar-AA1PrnOj">MSN Food</a></small>
+</div>
+
+</section>
+
+<section id="nutrition-section">
+  <h2>🥦 Nutrition News</h2>
+  <ul class="nutrition-news">
+  <li>
+    <strong>Processed fats may not harm heart health</strong><br>
+    New study finds interesterified fats from palm oils are safer than expected.
+    <br><small>Source: <a href="https://www.sciencedaily.com/news/health_medicine/nutrition/">ScienceDaily</a></small>
+  </li>
+  <li>
+    <strong>Bananas may block smoothie nutrients</strong><br>
+    UC Davis researchers say bananas reduce flavanol absorption.
+    <br><small>Source: <a href="https://www.sciencedaily.com/news/health_medicine/nutrition/">ScienceDaily</a></small>
+  </li>
+</ul>
+
+</section>
+
+  </main>
 
   <footer><p>© 2025 CHUONG</p></footer>
+
+
+  <script>
+    // Theme persistence with localStorage
+    const themeLink = document.getElementById('theme-style');
+    const savedTheme = localStorage.getItem('theme');
+
+    if (savedTheme) {
+      themeLink.setAttribute('href', savedTheme);
+    }
+
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      const current = themeLink.getAttribute('href');
+      const newTheme = current.includes('light.css')
+        ? '/assets/css/themes/dark.css'
+        : '/assets/css/themes/light.css';
+
+      themeLink.setAttribute('href', newTheme);
+      localStorage.setItem('theme', newTheme);
+    });
+  </script>
+  <script defer src="/assets/js/weather.js"></script>
 
 </body>
 </html>

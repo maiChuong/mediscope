@@ -1,0 +1,13 @@
+#nutrition-section .nutrition-news {
+  list-style: none;
+}
+#nutrition-section .nutrition-news li {
+  background-color: var(--card-bg);
+  border-left: 4px solid var(--accent-color);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}
+#nutrition-section strong {
+  color: var(--accent-color);
+}

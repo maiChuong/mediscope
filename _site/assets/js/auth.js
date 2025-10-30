@@ -11,8 +11,13 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
   const hashed = await hash(password);
 
   try {
-    const response = await fetch('/data/auth.json');
+    const response = await fetch('data/auth.json'); // ✅ relative path for local testing
     const credentials = await response.json();
+
+    // ✅ Debug logging inside the scope
+    console.log("Username:", username);
+    console.log("Hashed password:", hashed);
+    console.log("Stored hash:", credentials[username]);
 
     if (credentials[username] === hashed) {
       localStorage.setItem('authUser', username);

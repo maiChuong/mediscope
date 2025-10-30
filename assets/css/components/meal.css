@@ -1,0 +1,9 @@
+#meal-section .meal-highlight {
+  background-color: var(--card-bg);
+  border-left: 4px solid var(--accent-color);
+  padding: 1rem;
+  border-radius: 4px;
+}
+#meal-section h3 {
+  color: var(--accent-color);
+}

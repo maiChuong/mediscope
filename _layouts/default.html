@@ -1,12 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>{{ page.title }}</title>
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <meta charset="UTF-8">
+  <title>{{ page.title }} | MediScope</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link id="theme-style" rel="stylesheet" href="/assets/css/themes/light.css">
 </head>
 <body>
   {% include header.html %}
-  {{ content }}
+
+  {% include theme-toggle.html %}
+
+  <main>
+    {{ content }}
+  </main>
+
   {% include footer.html %}
+
+  <script>
+    // Theme persistence with localStorage
+    const themeLink = document.getElementById('theme-style');
+    const savedTheme = localStorage.getItem('theme');
+
+    if (savedTheme) {
+      themeLink.setAttribute('href', savedTheme);
+    }
+
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      const current = themeLink.getAttribute('href');
+      const newTheme = current.includes('light.css')
+        ? '/assets/css/themes/dark.css'
+        : '/assets/css/themes/light.css';
+
+      themeLink.setAttribute('href', newTheme);
+      localStorage.setItem('theme', newTheme);
+    });
+  </script>
+  <script defer src="/assets/js/weather.js"></script>
+
 </body>
 </html>

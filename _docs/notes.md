@@ -17,7 +17,10 @@ The encrypted file auth.json.enc is committed to your repo under data/
 
 Your auth.js fetches /data/auth.json at runtime to validate login
 
-
+6b86252dc61a9321bc87c3bcd0a5dcf4
 
 bundle exec jekyll build
 bundle exec jekyll serve
+
+http://127.0.0.1:4000/login.html
+https://api.openweathermap.org/data/2.5/weather?q=Ho%20Chi%20Minh&units=metric&appid=YOUR_API_KEY
